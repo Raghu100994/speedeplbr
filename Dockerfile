@@ -2,7 +2,7 @@ FROM ubuntu:24.04
 
 ENV JAVA_HOME=/u01/middleware/jdk-11.0.2
 ENV PATH=$PATH:${JAVA_HOME}/bin
-ENV TOMCAT_HOME=/u01/middleware/aapache-tomcat-9.0.89
+ENV TOMCAT_HOME=/u01/middleware/apache-tomcat-9.0.89
 ENV PATH=$PATH:${TOMCAT_HOME}/bin
 
 

@@ -8,12 +8,6 @@ spec:
     matchLabels:
       name: speed
       version: "1.0"
-  strategy:
-    type: Recreate
-  selector:
-    matchLabels:
-      name: speed
-      version: "1.0"
   template:
     metadata:
       labels:
@@ -26,29 +20,29 @@ spec:
     spec:
       containers:
         - name: speedcontainer
-          image: raghravi94/speeddeployment:1.0
+          image: public.ecr.aws/y7o1n7v2/speed:3.0
           ports:
             - name: tomcatport
               containerPort: 8080
               protocol: TCP
-#          readinessProbe:
-#            httpGet:
-#              path: /actuator/health/readiness.htm
-#              port: 8080
-#            initialDelaySeconds: 15
-#            timeoutSeconds: 10
-#            failureThreshold: 3
-#          livenessProbe:
-#            httpGet:
-#              path: /actuator/health/liveness.htm
-#              port: 8080
-#            initialDelaySeconds: 15
-#            timeoutSeconds: 10
-#            failureThreshold: 3
-          resources:
-            requests:
-              cpu: "500m"
-              memory: "512Mi"
-            limits:
-              cpu: "500m"
-              memory: "512Mi"
+          readinessProbe:
+            httpGet:
+              path: /speed/health/readiness.htm
+              port: 8080
+            initialDelaySeconds: 15
+            timeoutSeconds: 10
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /speed/health/liveness.htm
+              port: 8080
+            initialDelaySeconds: 15
+            timeoutSeconds: 10
+            failureThreshold: 3
+#          resources:
+#            requests:
+#              cpu: "500m"
+#              memory: "512Mi"
+#            limits:
+#              cpu: "500m"
+#              memory: "512Mi"
